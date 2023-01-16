@@ -3,12 +3,15 @@ import { Routes, Route } from "react-router-dom";
 import Home from './pages/home';
 import Header from './components/header';
 
+const RegistryView = lazy(()=>import('./pages/registry'))
+
 function App() {
   return (
   <>
   <React.Suspense fallback={'loading'}>
     <Header/>
    <Routes>
+    <Route path="/registry/view" element={<RegistryView/>}/>
     <Route path="/" element={<Home/>}/>
    </Routes>
    </React.Suspense>
