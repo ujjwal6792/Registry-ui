@@ -4,7 +4,7 @@ import HomeCards from "../../components/homeCards";
 import { AppContext } from "../../context";
 
 const Home = () => {
-  const {getOrgDetails, setOrgData} = useContext(AppContext);
+  const { addOrgData } = useContext(AppContext);
   const navigate = useNavigate();
   const [orgs, setOrgs] = useState([]);
   useEffect(() => {
@@ -14,7 +14,6 @@ const Home = () => {
       .then((response) => response.json())
       .then((data) => {
         setOrgs(data.orgs);
-        console.log(data);
       })
       .catch((error) => alert(error));
   }, []);
@@ -24,8 +23,8 @@ const Home = () => {
         <HomeCards
           key={org.id + i}
           onClick={() => {
-            setOrgData(org);
-            navigate(`/registry/view/${org.id}`)
+            addOrgData(org ? org : { name: "Org" });
+            navigate(`/registry/view/${org.id}`);
           }}
           id={org.id + i}
           description={org.description}

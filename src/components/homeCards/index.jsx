@@ -15,7 +15,7 @@ const HomeCards = (props) => {
     >
       <div className="p-4 flex box-border  justify-between">
         <div className="w-3/4">
-          <h6 className="py-2">{name}</h6>
+          <h6 className="py-2 capitalize">{name}</h6>
           <p className="font-light text-xs text-grey-text">
             Last Updated: {updateDate?.slice(0,10) || dateFormat.format(today)}
           </p>
@@ -28,7 +28,7 @@ const HomeCards = (props) => {
         className="flex justify-between items-center text-grey-text bg-grey-light py-3 px-2
           hover:text-blue-button hover:transition-colors "
       >
-        <p className="text-sm w-[80%] truncate ">{description}</p>
+        <p className="text-sm w-[80%] truncate capitalize">{description}</p>
         <FiArrowRight className="w-[15%] text-lg hover:transition-transform hover:translate-x-2 " />
       </div>
     </div>

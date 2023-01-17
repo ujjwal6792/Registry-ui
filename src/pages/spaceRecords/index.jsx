@@ -14,7 +14,7 @@ const SpaceRecords = () => {
     fetch(
       `${
         import.meta.env.VITE_API_ENDPOINT
-      }/api/v1/${orgId}/${spaceId}/records?registry=1&page=${pageIndex}&pageSize=${pageSize}&search=${search}`
+      }/api/v1/${orgId}/${spaceId}/records?registry=1&page=${pageIndex}&pageSize=${pageSize}&search=${search}&active=1`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -38,7 +38,7 @@ const SpaceRecords = () => {
         <h5>Records</h5>
         <input className="w-1/3 border-gray-300 border-[1.5px] rounded h-8 px-2" type="text" placeholder="Search Records"  
         onChange={(e)=> setSearch(e.target.value)}/>
-        <h6>Showing {`1-${records.length} of ${count}`}</h6>
+        <h6>Showing {`${(pageIndex-1)*pageSize+1}-${(pageIndex-1)*pageSize + records.length} of ${count}`}</h6>
       </div>
       <div className="grid mt-4">
         <div className="grid grid-cols-4 gap-2 text-start text-grey-text shadow-md p-2 bg-[#FBF2EC] mb-2">

@@ -17,10 +17,10 @@ const Header = () => {
           src={logo}
           alt="Dhiway"
         />
-        <p className="font-medium text-lg">
+        <p className="font-medium text-lg capitalize">
           {location.pathname === "/" ? (
             <p className="cursor-default">Organisations</p>
-          ) : `${orgData.name}`
+          ) : `${orgData?.name}`
 }
         </p>
       </div>
