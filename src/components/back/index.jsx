@@ -21,18 +21,18 @@ const BackButton = (props) => {
           <small className="cursor-default">Home</small>
         ) : location.pathname.includes("/view") ? (
           <small className="cursor-default">
-            <span className="cursor-pointer" onClick={() => navigate("/")}>
+            <span className="cursor-pointer text-gray-600" onClick={() => navigate("/")}>
               Home
             </span>{" "}
             <span>/</span> {orgData?.name} <span>/ </span>Registries
           </small>
         ) : location.pathname.includes("/records") ? (
           <small className="cursor-default">
-            <span className="cursor-pointer" onClick={() => navigate("/")}>
+            <span className="cursor-pointer text-gray-600" onClick={() => navigate("/")}>
               Home
             </span>{" "}
             <span>/</span>{" "}
-            <span className="cursor-pointer" onClick={() => navigate(-1)}>
+            <span className="cursor-pointer text-gray-600" onClick={() => navigate(-1)}>
               {orgData?.name}
             </span>{" "}
             <span>/</span> {registryData?.name} <span>/</span> Records

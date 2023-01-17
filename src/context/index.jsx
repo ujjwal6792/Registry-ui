@@ -14,7 +14,6 @@ export const AppProvider = (props) => {
   if (registry){
     addRegistryData(JSON.parse(registry))
   }
-  console.log(data);
   },[])
 
   const addOrgData = (data)=>{

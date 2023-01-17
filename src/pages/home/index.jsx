@@ -2,22 +2,28 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HomeCards from "../../components/homeCards";
 import { AppContext } from "../../context";
+import LoadingDhiway from '../../components/loading';
 
 const Home = () => {
   const { addOrgData } = useContext(AppContext);
   const navigate = useNavigate();
   const [orgs, setOrgs] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
+    setIsLoading(true)
     fetch(`${import.meta.env.VITE_API_ENDPOINT}/api/v1/orgs?registry=1`, {
       method: "GET",
     })
       .then((response) => response.json())
       .then((data) => {
         setOrgs(data.orgs);
+        setIsLoading(false)
       })
-      .catch((error) => alert(error));
+      .catch((error) => console.log(error));
   }, []);
-  return (
+  return <>
+    {
+      isLoading? <LoadingDhiway/> :
     <div className="w-100 grid grid-cols-4 gap-3 mt-4 pt-20">
       {orgs.map((org, i) => (
         <HomeCards
@@ -33,7 +39,8 @@ const Home = () => {
         />
       ))}
     </div>
-  );
+  }
+  </>;
 };
 
 export default Home;

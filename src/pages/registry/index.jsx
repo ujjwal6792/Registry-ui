@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import HomeCards from "../../components/homeCards";
 import { IoIosArrowBack } from "react-icons/io";
 import BackButton from "../../components/back";
+import LoadingDhiway from "../../components/loading";
 import AppContext from "../../context";
 
 const RegistryView = () => {
@@ -10,8 +11,10 @@ const RegistryView = () => {
   const { orgId } = useParams();
   const navigate = useNavigate();
   const [spaces, setSpaces] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     if (orgId) {
+      setIsLoading(true)
       fetch(
         `${
           import.meta.env.VITE_API_ENDPOINT
@@ -21,16 +24,19 @@ const RegistryView = () => {
         .then((response) => response.json())
         .then((response) => {
           setSpaces(response.spaces);
-        });
+          setIsLoading(false)
+        }).catch(err=>console.log(err));
     }
   }, [orgId]);
-  return (
+  return (<>
+    { isLoading? <LoadingDhiway/> :
     <div className="pt-20">
       <BackButton link={'/'}/>
       <div className="w-100 grid grid-cols-4 gap-3 mt-4">
         {spaces.length>0?spaces.map((space) => {
           return (
             <HomeCards
+              key={space.id}
               id={space.id}
               name={space.name}
               updateDate={space.updatedAt}
@@ -45,7 +51,8 @@ const RegistryView = () => {
         }
       </div>
     </div>
-  );
+  }
+  </>);
 };
 
 export default RegistryView;
