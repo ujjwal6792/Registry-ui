@@ -39,7 +39,8 @@ const SpaceRecords = () => {
     <>
       <div className="pt-20">
         <BackButton link={`/registry/view/${orgId}`} />
-        <div className="flex justify-between border-b p-2">
+        <div className=" shadow-md">
+        <div className="flex justify-between items-end border-b mt-2 p-2">
           <h5>Records</h5>
           <input
             className="w-1/3 border-gray-300 border-[1.5px] rounded h-8 px-2"
@@ -90,6 +91,7 @@ const SpaceRecords = () => {
               No Records Found
             </h5>
           )}
+        </div>
         </div>
         <div id="pagination" className="flex justify-center gap-2 my-8">
           {pages?.map((o, i) => {

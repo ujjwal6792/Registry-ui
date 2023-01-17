@@ -32,7 +32,7 @@ const RegistryView = () => {
     { isLoading? <LoadingDhiway/> :
     <div className="pt-20">
       <BackButton link={'/'}/>
-      <div className="w-100 grid grid-cols-4 gap-3 mt-4">
+      <div className="w-100 grid grid-cols-4 gap-4 mt-4">
         {spaces.length>0?spaces.map((space) => {
           return (
             <HomeCards
