@@ -54,45 +54,43 @@ const SpaceRecords = () => {
             } of ${count}`}
           </h6>
         </div>
-          <div className="grid mt-4">
-            <div className="grid grid-cols-4 gap-2 text-start text-grey-text shadow-md p-2 bg-[#FBF2EC] mb-2">
-              <p>TITLE</p>
-              <p>STATUS</p>
-              <p>RECIPIENTS</p>
-              <p className="text-end mr-4">ISSUED ON</p>
-            </div>
-            {isLoading ? (
-          <LoadingDhiway />
-        ) : (
-            records.length > 0 ? (
-              records.map((record, i) => {
-                return (
-                  <div
-                    key={i}
-                    className="grid grid-cols-4 gap-2 text-dark-grey-text text-start shadow-sm p-2"
-                  >
-                    <p className="text-start">{record.title}</p>
-                    <span>
-                      {record.anchorTime ? (
-                        <p className="text-active-green">Issued</p>
-                      ) : (
-                        <p className="text-red-600">Draft</p>
-                      )}
-                    </span>
-                    <p>{record.recipients[0]}</p>
-                    <p className="text-end mr-4">
-                      {record.createdAt?.slice(0, 10)}
-                    </p>
-                  </div>
-                );
-              })
-            ) : (
-              <h5 className="mx-auto text-dark-grey-text mt-12 text-xl">
-                No Records Found
-              </h5>
-            )
-        )}
+        <div className="grid mt-4">
+          <div className="grid grid-cols-4 gap-2 text-start text-grey-text shadow-md p-2 bg-[#FBF2EC] mb-2">
+            <p>TITLE</p>
+            <p>STATUS</p>
+            <p>RECIPIENTS</p>
+            <p className="text-end mr-4">ISSUED ON</p>
           </div>
+          {isLoading ? (
+            <LoadingDhiway />
+          ) : records.length > 0 ? (
+            records.map((record, i) => {
+              return (
+                <div
+                  key={i}
+                  className="grid grid-cols-4 gap-2 text-dark-grey-text text-start shadow-sm p-2"
+                >
+                  <p className="text-start">{record.title}</p>
+                  <span>
+                    {record.anchorTime ? (
+                      <p className="text-active-green">Issued</p>
+                    ) : (
+                      <p className="text-red-600">Draft</p>
+                    )}
+                  </span>
+                  <p>{record.recipients[0]}</p>
+                  <p className="text-end mr-4">
+                    {record.createdAt?.slice(0, 10)}
+                  </p>
+                </div>
+              );
+            })
+          ) : (
+            <h5 className="mx-auto text-dark-grey-text mt-12 text-xl">
+              No Records Found
+            </h5>
+          )}
+        </div>
         <div id="pagination" className="flex justify-center gap-2 my-8">
           {pages?.map((o, i) => {
             return (
