@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../assets/images/orgIcon.png";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AppContext } from "../../context";
 const Header = () => {
-  const {orgId} = useParams()
+  const { orgData} = useContext(AppContext)
   const location = useLocation();
   const navigate = useNavigate();
   return (
@@ -19,17 +20,8 @@ const Header = () => {
         <p className="font-medium text-lg">
           {location.pathname === "/" ? (
             <p className="cursor-default">Organisations</p>
-          ) : location.pathname.includes("/view") ? (
-            <p className="cursor-default">
-              <span className="cursor-pointer" onClick={()=> navigate('/')}>Org</span> <span>/</span> Registries
-            </p>
-          ) : location.pathname.includes("/records") ? (
-            <p className="cursor-default">
-              <span className="cursor-pointer" onClick={()=> navigate('/')}>Org</span> <span>/</span> <span className="cursor-pointer" onClick={()=> navigate(-1)}>Registries</span>  <span>/</span> Records
-            </p>
-          ) : (
-            ""
-          )}
+          ) : `${orgData.name}`
+}
         </p>
       </div>
     </div>
