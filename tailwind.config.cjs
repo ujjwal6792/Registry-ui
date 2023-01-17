@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "blue-header": "#152E3F",
+        "blue-header": "#d5f3ff",
         "blue-button": "#5297C7",
         "grey-extra-light":"FAFAFA",
         "grey-light":"#ececec80",
