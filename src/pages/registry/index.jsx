@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import HomeCards from "../../components/homeCards";
+import { IoIosArrowBack } from "react-icons/io";
+import BackButton from "../../components/back";
 
 const RegistryView = () => {
   const { orgId } = useParams();
+  const navigate = useNavigate();
   const [spaces, setSpaces] = useState([]);
   useEffect(() => {
     if (orgId) {
@@ -16,22 +19,25 @@ const RegistryView = () => {
         .then((response) => response.json())
         .then((response) => {
           setSpaces(response.spaces);
-          console.log(response.spaces);
         });
     }
   }, [orgId]);
   return (
-    <div className="w-100 grid grid-cols-4 gap-3 mt-4 pt-20">
-      {spaces.map((space) => {
-        return (
+    <div className="pt-20">
+      <BackButton link={'/'}/>
+      <div className="w-100 grid grid-cols-4 gap-3 mt-4">
+        {spaces.map((space) => {
+          return (
             <HomeCards
               id={space.id}
               name={space.name}
               updateDate={space.updatedAt}
               description={space.description}
+              onClick={() => navigate(`/registry/records/${orgId}/${space.id}`)}
             />
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

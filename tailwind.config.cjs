@@ -8,6 +8,7 @@ module.exports = {
         "grey-extra-light":"FAFAFA",
         "grey-light":"#ececec80",
         "grey-text":"#838789",
+        "dark-grey-text":"#555F7C",
         "active-green": "#53A67F",
       },
       height: {

@@ -17,7 +17,7 @@ const HomeCards = (props) => {
         <div className="w-3/4">
           <h6 className="py-2">{name}</h6>
           <p className="font-light text-xs text-grey-text">
-            Last Updated: {updateDate.slice(0,10) || dateFormat.format(today)}
+            Last Updated: {updateDate?.slice(0,10) || dateFormat.format(today)}
           </p>
         </div>
         <div className="w-1/4 flex justify-center items-center" >
