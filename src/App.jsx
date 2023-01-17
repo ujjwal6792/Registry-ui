@@ -11,7 +11,7 @@ function App() {
   <React.Suspense fallback={'loading'}>
     <Header/>
    <Routes>
-    <Route path="/registry/view" element={<RegistryView/>}/>
+    <Route path="/registry/view/:orgId" element={<RegistryView/>}/>
     <Route path="/" element={<Home/>}/>
    </Routes>
    </React.Suspense>
