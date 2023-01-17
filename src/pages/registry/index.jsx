@@ -26,7 +26,7 @@ const RegistryView = () => {
     <div className="pt-20">
       <BackButton link={'/'}/>
       <div className="w-100 grid grid-cols-4 gap-3 mt-4">
-        {spaces.map((space) => {
+        {spaces.length>0?spaces.map((space) => {
           return (
             <HomeCards
               id={space.id}
@@ -36,7 +36,9 @@ const RegistryView = () => {
               onClick={() => navigate(`/registry/records/${orgId}/${space.id}`)}
             />
           );
-        })}
+        }):
+        <h5 className="mx-auto text-dark-grey-text mt-12 text-xl">No Registries Found</h5>
+        }
       </div>
     </div>
   );
