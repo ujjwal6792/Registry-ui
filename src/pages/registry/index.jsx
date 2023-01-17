@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import HomeCards from "../../components/homeCards";
 import { IoIosArrowBack } from "react-icons/io";
 import BackButton from "../../components/back";
+import AppContext from "../../context";
 
 const RegistryView = () => {
+  const {addRegistryData} = useContext(AppContext)
   const { orgId } = useParams();
   const navigate = useNavigate();
   const [spaces, setSpaces] = useState([]);
@@ -33,7 +35,9 @@ const RegistryView = () => {
               name={space.name}
               updateDate={space.updatedAt}
               description={space.description}
-              onClick={() => navigate(`/registry/records/${orgId}/${space.id}`)}
+              onClick={() => {
+                addRegistryData(space)
+                navigate(`/registry/records/${orgId}/${space.id}`)}}
             />
           );
         }):
