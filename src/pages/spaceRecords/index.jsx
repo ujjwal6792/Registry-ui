@@ -39,7 +39,7 @@ const SpaceRecords = () => {
     <>
       <div className="pt-20">
         <BackButton link={`/registry/view/${orgId}`} />
-        <div className=" shadow-md">
+        <div className="shadow-md">
         <div className="flex justify-between items-end border-b mt-2 p-2">
           <h5>Records</h5>
           <input
@@ -55,8 +55,8 @@ const SpaceRecords = () => {
             } of ${count}`}
           </h6>
         </div>
-        <div className="grid mt-4">
-          <div className="grid grid-cols-4 gap-2 text-start text-grey-text shadow-md p-2 bg-[#FBF2EC] mb-2">
+        <div className="flex flex-col relative h-60v overflow-auto">
+          <div className="sticky h-fit top-0 bottom-0 grid grid-cols-4 gap-2 text-start text-grey-text shadow-md p-2 bg-[#FBF2EC] mb-2">
             <p>TITLE</p>
             <p>STATUS</p>
             <p>RECIPIENTS</p>
@@ -87,7 +87,7 @@ const SpaceRecords = () => {
               );
             })
           ) : (
-            <h5 className="mx-auto text-dark-grey-text mt-12 text-xl">
+            <h5 className="mx-auto text-dark-grey-text my-12  text-xl">
               No Records Found
             </h5>
           )}
